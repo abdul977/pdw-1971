@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h1>Generating PWA Icons...</h1>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="status"></div>
+
+    <script>
+        const sizes = [32, 72, 96, 128, 144, 152, 192, 384, 512];
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const status = document.getElementById('status');
+
+        function generateIcon(size) {
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#2196F3');
+            gradient.addColorStop(1, '#1976D2');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add PWA text
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.2}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('PWA', size / 2, size / 2);
+            
+            // Add smaller text
+            ctx.font = `${size * 0.1}px Arial`;
+            ctx.fillText('OFFLINE', size / 2, size * 0.75);
+            
+            return canvas.toDataURL('image/png');
+        }
+
+        function downloadIcon(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            link.click();
+        }
+
+        function generateAllIcons() {
+            status.innerHTML = 'Generating icons...<br>';
+            
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    const dataUrl = generateIcon(size);
+                    downloadIcon(dataUrl, `icon-${size}x${size}.png`);
+                    status.innerHTML += `Generated icon-${size}x${size}.png<br>`;
+                    
+                    if (index === sizes.length - 1) {
+                        status.innerHTML += '<br><strong>All icons generated! Move them to the icons/ folder.</strong>';
+                    }
+                }, index * 500);
+            });
+        }
+
+        // Auto-generate icons when page loads
+        window.onload = generateAllIcons;
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline PWA Demo</title>
+    <meta name="description" content="A Progressive Web App demonstrating offline capabilities">
+    <meta name="theme-color" content="#2196F3">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Offline PWA">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Offline PWA Demo</h1>
+            <div class="status-indicator">
+                <span id="online-status" class="status online">Online</span>
+                <button id="install-btn" class="install-btn" style="display: none;">Install App</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="feature-section">
+                <h2>📱 PWA Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔄 Offline Support</h3>
+                        <p>Works without internet connection</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📦 Installable</h3>
+                        <p>Install like a native app</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 Background Sync</h3>
+                        <p>Sync data when back online</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Fast Loading</h3>
+                        <p>Cached resources load instantly</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2>🎯 Offline Demo</h2>
+                
+                <!-- Cached Content Demo -->
+                <div class="demo-card">
+                    <h3>📄 Cached Content</h3>
+                    <p>This content is cached and available offline</p>
+                    <button id="load-cached-data" class="btn">Load Cached Data</button>
+                    <div id="cached-content" class="content-area"></div>
+                </div>
+
+                <!-- Offline Form Demo -->
+                <div class="demo-card">
+                    <h3>📝 Offline Form</h3>
+                    <p>Submit forms offline - they'll sync when you're back online</p>
+                    <form id="offline-form">
+                        <input type="text" id="name" placeholder="Your name" required>
+                        <textarea id="message" placeholder="Your message" required></textarea>
+                        <button type="submit" class="btn">Submit (Works Offline)</button>
+                    </form>
+                    <div id="form-status" class="status-message"></div>
+                </div>
+
+                <!-- API Demo -->
+                <div class="demo-card">
+                    <h3>🌐 API with Offline Fallback</h3>
+                    <p>Try this with and without internet connection</p>
+                    <button id="fetch-data" class="btn">Fetch Random Quote</button>
+                    <div id="api-content" class="content-area"></div>
+                </div>
+            </section>
+
+            <section class="sync-section">
+                <h2>🔄 Background Sync Status</h2>
+                <div id="sync-status" class="sync-status">
+                    <p>Pending sync items: <span id="pending-count">0</span></p>
+                    <button id="force-sync" class="btn">Force Sync</button>
+                </div>
+                <div id="sync-log" class="sync-log"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>PWA Demo - Works Offline! 🎉</p>
+            <p>Try disconnecting your internet and refreshing the page</p>
+        </footer>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification" style="display: none;">
+        <span id="notification-text"></span>
+        <button id="notification-close">×</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
