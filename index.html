@@ -1,198 +1,1168 @@
-<!DOCTYPE html> <!-- HTML5 document type declaration -->
-<html lang="en"> <!-- Root element with English language specification for accessibility -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8">
-
-    <!-- Responsive viewport meta tag for mobile-first design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title shown in browser tab and search results -->
-    <title>Offline PWA Demo</title>
-
-    <!-- SEO meta description for search engines -->
-    <meta name="description" content="A Progressive Web App demonstrating offline capabilities">
-
-    <!-- PWA theme color - affects browser UI elements and status bar -->
+    <title>Abdul Mumin Ibrahim - Business Manager & Entrepreneur</title>
+    <meta name="description" content="Abdul Mumin Ibrahim - Business Manager & Entrepreneur with 5+ years experience in operations management, financial planning, and strategic growth">
     <meta name="theme-color" content="#2196F3">
-
-    <!-- PWA Manifest - links to app configuration file -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- iOS specific meta tags for proper PWA behavior on Apple devices -->
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Enable full-screen mode -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Status bar appearance -->
-    <meta name="apple-mobile-web-app-title" content="Offline PWA"> <!-- App name on iOS home screen -->
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png"> <!-- iOS home screen icon -->
-
-    <!-- Favicon for browser tab -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Abdul Mumin Ibrahim">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
-
-    <!-- Main stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Additional Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .section p {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bg-light {
+            background: #f8f9fa;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-text h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-text p {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .timeline-content h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Main container for all page content -->
-    <div class="container">
-        <!-- Page header with title and status indicators -->
-        <header>
-            <h1>🚀 Offline PWA Demo</h1> <!-- Main page title with emoji for visual appeal -->
-            <div class="status-indicator">
-                <!-- Online/offline status indicator - updated by JavaScript -->
-                <span id="online-status" class="status online">Online</span>
-                <!-- PWA install button - shown when app can be installed -->
-                <button id="install-btn" class="install-btn" style="display: none;">Install App</button>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Abdul Mumin Ibrahim</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="https://ttcapwgcfadajcoljuuk.supabase.co/storage/v1/object/public/audio_notes//Photoroom-20250117_150215.png" alt="Abdul Mumin Ibrahim" class="profile-img">
+            <h1>Hello, I'm<br>Abdul Mumin Ibrahim</h1>
+            <p>Business Manager & Entrepreneur</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary">Get In Touch</a>
+                <a href="#projects" class="btn secondary">View Projects</a>
+                <a href="#" class="btn secondary">Resume</a>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <!-- Main content area -->
-        <main>
-            <!-- PWA features showcase section -->
-            <section class="feature-section">
-                <h2>📱 PWA Features</h2>
-                <!-- Grid layout for feature cards -->
-                <div class="feature-grid">
-                    <!-- Individual feature cards highlighting PWA capabilities -->
-                    <div class="feature-card">
-                        <h3>🔄 Offline Support</h3>
-                        <p>Works without internet connection</p>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <h4>A Motivated Business Manager & Entrepreneur</h4>
+                    <p>I'm Abdul Mumin Ibrahim, a highly motivated and results-driven business manager and entrepreneur with over five years of experience in managing and co-owning diverse businesses. I have expertise in financial planning, operations management, strategic growth, team leadership, and digital marketing.</p>
+
+                    <p>With a proven ability to drive business success through innovative strategies and efficient resource management, I've successfully scaled businesses from initial capital to thriving enterprises with significant market presence. I'm passionate about fostering business growth, operational excellence, and leveraging technology to enhance business processes.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>📦 Installable</h3>
-                        <p>Install like a native app</p>
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Businesses Managed</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>🔄 Background Sync</h3>
-                        <p>Sync data when back online</p>
+                    <div class="stat-item">
+                        <h3>20+</h3>
+                        <p>Clients</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>⚡ Fast Loading</h3>
-                        <p>Cached resources load instantly</p>
+                    <div class="stat-item">
+                        <h3>Open</h3>
+                        <p>to Opportunities</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Interactive demo section -->
-            <section class="demo-section">
-                <h2>🎯 Offline Demo</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">Technical Expertise</p>
+            <p>With a diverse skill set spanning business management, technical skills, and professional expertise.</p>
 
-                <!-- Cached Content Demo - demonstrates service worker caching -->
-                <div class="demo-card">
-                    <h3>📄 Cached Content</h3>
-                    <p>This content is cached and available offline</p>
-                    <!-- Button to trigger cached content loading -->
-                    <button id="load-cached-data" class="btn">Load Cached Data</button>
-                    <!-- Container for displaying cached content -->
-                    <div id="cached-content" class="content-area"></div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💼 Business Management</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Business Management</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Operations Management</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Financial Planning</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Team Leadership</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Offline Form Demo - demonstrates background sync -->
-                <div class="demo-card">
-                    <h3>📝 Offline Form</h3>
-                    <p>Submit forms offline - they'll sync when you're back online</p>
-                    <!-- Form that works offline using background sync -->
-                    <form id="offline-form">
-                        <!-- Name input field with validation -->
-                        <input type="text" id="name" placeholder="Your name" required>
-                        <!-- Message textarea with validation -->
-                        <textarea id="message" placeholder="Your message" required></textarea>
-                        <!-- Submit button that queues data when offline -->
-                        <button type="submit" class="btn">Submit (Works Offline)</button>
+                <div class="skill-category">
+                    <h3>💰 Financial & Marketing</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Financial Advising</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Digital Marketing</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Customer Engagement</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Risk Management</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Android Development</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React Native</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>AI Integration</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <p class="section-subtitle">Recent Projects</p>
+            <p>Explore my diverse portfolio of projects showcasing my expertise in business management, web development, and innovative digital solutions.</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Whatsuit App</h3>
+                        <p class="project-description">An intelligent Android application that enhances messaging experience by providing AI-powered responses to notifications using Google's Gemini API.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">MVVM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎥</div>
+                    <div class="project-content">
+                        <h3 class="project-title">WebinarMagic</h3>
+                        <p class="project-description">A powerful mobile application for creating, managing, and hosting interactive webinars with features like Q&A, participant tracking, and offline support.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎤</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Transbord</h3>
+                        <p class="project-description">A voice transcription Android app that converts speech to text anywhere on the device through an innovative overlay button using Groq API.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Groq API</span>
+                            <span class="tech-tag">Room Database</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📄</div>
+                    <div class="project-content">
+                        <h3 class="project-title">CV Generator with Agentic AI</h3>
+                        <p class="project-description">A Flask application that leverages a multi-agent system and Google Generative AI to analyze, optimize, and format CV content.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Google AI</span>
+                            <span class="tech-tag">Multi-agent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🍰</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Diamond Elite Bites</h3>
+                        <p class="project-description">A full-stack web application for a bakery business with product catalog, blog section, image gallery, testimonials, and admin dashboard.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">✈️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lost in Travel</h3>
+                        <p class="project-description">A curated travel inspiration app built with modern Android development practices. Features authentication, recommended destinations, and robust offline support.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Jetpack Compose</span>
+                            <span class="tech-tag">MVVM</span>
+                            <span class="tech-tag">GraphQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <p class="section-subtitle">Experience & Education</p>
+            <p>My professional journey and academic background that have shaped my career.</p>
+
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Mobile App Developer</h3>
+                        <h4>Muahib Solutions</h4>
+                        <span class="timeline-date">January 2023 - Present</span>
+                        <p>Developed multiple Android and React Native applications including Whatsuit, WebinarMagic, and Transbord. Implemented clean architecture principles and modern development practices.</p>
+                        <div class="timeline-skills">
+                            <span class="skill-tag">Android Development</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">AI Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Co-Owner & Business Manager</h3>
+                        <h4>Muahib's Store</h4>
+                        <span class="timeline-date">August 2022 - Present</span>
+                        <p>Streamlined operations reducing costs by 18%. Designed marketing strategies achieving 350-450% ROI. Scaled business from ₦20,000 to significant market presence with 200% annual growth.</p>
+                        <div class="timeline-skills">
+                            <span class="skill-tag">Operations Management</span>
+                            <span class="skill-tag">Marketing Strategy</span>
+                            <span class="skill-tag">Financial Planning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Co-Owner & Educational Manager</h3>
+                        <h4>Muahib Academy</h4>
+                        <span class="timeline-date">2021 - Present</span>
+                        <p>Oversaw training programs for 250+ participants annually. Conducted 70+ workshops. Managed online platforms increasing enrollment by 45%.</p>
+                        <div class="timeline-skills">
+                            <span class="skill-tag">Educational Services</span>
+                            <span class="skill-tag">Workshop Facilitation</span>
+                            <span class="skill-tag">Online Presence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Business Consultant</h3>
+                        <h4>Various Small Businesses</h4>
+                        <span class="timeline-date">February 2021 - Present</span>
+                        <p>Provided comprehensive business management services to 15+ small businesses. Assisted in strategic plans leading to 25% average revenue growth within first year.</p>
+                        <div class="timeline-skills">
+                            <span class="skill-tag">Consulting Services</span>
+                            <span class="skill-tag">Strategic Planning</span>
+                            <span class="skill-tag">Resource Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Contact Me</p>
+            <p>Have a project in mind or want to discuss a potential collaboration? Feel free to reach out.</p>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>abdulmuminibrahim74@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+234 902 579 4407</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lugbe, Abuja, Nigeria</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Availability</h4>
+                            <p>Open to Opportunities</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/2349025794407?text=Hello%20Abdul%20Mumin,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you." class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Contact Me on WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Me A Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn primary">Send Message</button>
                     </form>
-                    <!-- Status message area for form feedback -->
-                    <div id="form-status" class="status-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Abdul Mumin Ibrahim</h3>
+                    <p>Business Manager & Entrepreneur specializing in operations management, financial planning, and strategic growth.</p>
                 </div>
 
-                <!-- API Demo - demonstrates network-first with cache fallback -->
-                <div class="demo-card">
-                    <h3>🌐 API with Offline Fallback</h3>
-                    <p>Try this with and without internet connection</p>
-                    <!-- Button to fetch data from external API -->
-                    <button id="fetch-data" class="btn">Fetch Random Quote</button>
-                    <!-- Container for displaying API response or cached data -->
-                    <div id="api-content" class="content-area"></div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-            </section>
 
-            <!-- Background sync status section -->
-            <section class="sync-section">
-                <h2>🔄 Background Sync Status</h2>
-                <!-- Sync status display and controls -->
-                <div id="sync-status" class="sync-status">
-                    <!-- Counter for pending sync items -->
-                    <p>Pending sync items: <span id="pending-count">0</span></p>
-                    <!-- Manual sync trigger button -->
-                    <button id="force-sync" class="btn">Force Sync</button>
+                <div class="footer-section">
+                    <h4>Get in Touch</h4>
+                    <p>Interested in working together? Feel free to contact me for any project or collaboration.</p>
+                    <a href="#contact" class="btn primary">Contact Me</a>
                 </div>
-                <!-- Log area for sync operation messages -->
-                <div id="sync-log" class="sync-log"></div>
-            </section>
+            </div>
 
-            <!-- Development Journey section -->
-            <section class="journey-section">
-                <h2>🚀 Development Journey</h2>
-                <div class="journey-content">
-                    <p>Building this PWA was a journey of solving real user problems, not just implementing technical requirements. The challenge wasn't just making things work offline—it was creating an experience that feels natural whether you're connected or not.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Abdul Mumin Ibrahim. All rights reserved.</p>
+                <p>Made with ❤️ by Abdul Mumin Ibrahim</p>
+            </div>
+        </div>
+    </footer>
 
-                    <div class="journey-highlights">
-                        <div class="journey-card">
-                            <h3>🎯 User-First Approach</h3>
-                            <p>Started by understanding three core scenarios: reading content offline, submitting forms on spotty connections, and working with cached vs. fresh data. Every technical decision serves the goal of better user experience.</p>
-                        </div>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-                        <div class="journey-card">
-                            <h3>⚡ Smart Caching Strategies</h3>
-                            <p>Implemented three-tier caching: cache-first for static assets (instant loading), network-first for APIs (fresh data when possible), and stale-while-revalidate for the best of both worlds.</p>
-                        </div>
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-                        <div class="journey-card">
-                            <h3>🔄 Robust Background Sync</h3>
-                            <p>Built a queuing system that handles partial failures, retry logic, and data consistency. Forms work offline and sync seamlessly when connectivity returns, with clear user feedback throughout.</p>
-                        </div>
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
 
-                        <div class="journey-card">
-                            <h3>🌐 Cross-Browser Reality</h3>
-                            <p>Implemented feature detection and graceful degradation for varying PWA support across browsers. Chrome and Edge excel, Firefox has limitations, Safari has quirks—but users get a good experience everywhere.</p>
-                        </div>
+            // Create WhatsApp message
+            const whatsappMessage = `Hello Abdul Mumin,
 
-                        <div class="journey-card">
-                            <h3>🎨 Intentional Design</h3>
-                            <p>Evolved from technical demo to user-focused application with glassmorphism design, real-time status indicators, and clear feedback. Offline mode feels intentional, not like a failure state.</p>
-                        </div>
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
 
-                        <div class="journey-card">
-                            <h3>🔧 Development Tools</h3>
-                            <p>Built with assistance from Gemini 2.0 Flash through Kilo Code by Google, which helped debug complex service worker issues and optimize caching strategies for better performance.</p>
-                        </div>
-                    </div>
+Message: ${message}
 
-                    <div class="journey-conclusion">
-                        <p><strong>Key Insight:</strong> Building a good PWA isn't just about implementing APIs correctly—it's about understanding how people actually use applications and designing offline experiences that feel natural and helpful rather than like compromises.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+Best regards,
+${name}`;
 
-        <!-- Page footer with instructions -->
-        <footer>
-            <p>PWA Demo - Works Offline! 🎉</p>
-            <p>Try disconnecting your internet and refreshing the page</p>
-        </footer>
-    </div>
+            const whatsappUrl = `https://wa.me/2349025794407?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
 
-    <!-- Loading indicator overlay - shown during async operations -->
-    <div id="loading" class="loading" style="display: none;">
-        <div class="spinner"></div> <!-- CSS animated spinner -->
-        <p>Loading...</p>
-    </div>
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    <!-- Notification banner - shown for user feedback -->
-    <div id="notification" class="notification" style="display: none;">
-        <span id="notification-text"></span> <!-- Notification message text -->
-        <button id="notification-close">×</button> <!-- Close button -->
-    </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-    <!-- Main application JavaScript - handles all PWA functionality -->
-    <script src="app.js"></script>
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
