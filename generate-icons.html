@@ -1,65 +1,88 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <!-- HTML5 document type declaration -->
+<html> <!-- Root HTML element -->
 <head>
+    <!-- Page title for browser tab -->
     <title>Icon Generator</title>
 </head>
 <body>
+    <!-- Main heading for the icon generator page -->
     <h1>Generating PWA Icons...</h1>
+
+    <!-- Hidden canvas element for drawing icons programmatically -->
     <canvas id="canvas" style="display: none;"></canvas>
+
+    <!-- Status div to show generation progress -->
     <div id="status"></div>
 
+    <!-- JavaScript for icon generation functionality -->
     <script>
+        // Array of required PWA icon sizes for different platforms and use cases
         const sizes = [32, 72, 96, 128, 144, 152, 192, 384, 512];
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        const status = document.getElementById('status');
 
+        // Get references to DOM elements
+        const canvas = document.getElementById('canvas');  // Canvas for drawing icons
+        const ctx = canvas.getContext('2d');              // 2D drawing context
+        const status = document.getElementById('status'); // Status display element
+
+        // Function to generate a single icon of specified size
         function generateIcon(size) {
+            // Set canvas dimensions to match icon size
             canvas.width = size;
             canvas.height = size;
-            
-            // Create gradient background
+
+            // Create diagonal gradient background from light blue to dark blue
             const gradient = ctx.createLinearGradient(0, 0, size, size);
-            gradient.addColorStop(0, '#2196F3');
-            gradient.addColorStop(1, '#1976D2');
-            
+            gradient.addColorStop(0, '#2196F3'); // Material Design Light Blue
+            gradient.addColorStop(1, '#1976D2'); // Material Design Dark Blue
+
+            // Apply gradient as fill style and draw background rectangle
             ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, size, size);
-            
-            // Add PWA text
-            ctx.fillStyle = 'white';
-            ctx.font = `bold ${size * 0.2}px Arial`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('PWA', size / 2, size / 2);
-            
-            // Add smaller text
-            ctx.font = `${size * 0.1}px Arial`;
-            ctx.fillText('OFFLINE', size / 2, size * 0.75);
-            
+            ctx.fillRect(0, 0, size, size); // Fill entire canvas
+
+            // Add main "PWA" text in white
+            ctx.fillStyle = 'white';                           // White text color
+            ctx.font = `bold ${size * 0.2}px Arial`;          // Font size proportional to icon size
+            ctx.textAlign = 'center';                         // Center text horizontally
+            ctx.textBaseline = 'middle';                      // Center text vertically
+            ctx.fillText('PWA', size / 2, size / 2);          // Draw text at center
+
+            // Add smaller "OFFLINE" text below main text
+            ctx.font = `${size * 0.1}px Arial`;              // Smaller font size
+            ctx.fillText('OFFLINE', size / 2, size * 0.75);  // Position at 75% down from top
+
+            // Convert canvas to PNG data URL for download
             return canvas.toDataURL('image/png');
         }
 
+        // Function to trigger download of generated icon
         function downloadIcon(dataUrl, filename) {
+            // Create temporary anchor element for download
             const link = document.createElement('a');
-            link.download = filename;
-            link.href = dataUrl;
-            link.click();
+            link.download = filename;  // Set download filename
+            link.href = dataUrl;       // Set data URL as href
+            link.click();              // Programmatically click to trigger download
         }
 
+        // Function to generate and download all required icon sizes
         function generateAllIcons() {
+            // Update status to show generation started
             status.innerHTML = 'Generating icons...<br>';
-            
+
+            // Generate each icon size with a delay between downloads
             sizes.forEach((size, index) => {
                 setTimeout(() => {
+                    // Generate icon data for current size
                     const dataUrl = generateIcon(size);
+                    // Trigger download with standardized filename
                     downloadIcon(dataUrl, `icon-${size}x${size}.png`);
+                    // Update status to show progress
                     status.innerHTML += `Generated icon-${size}x${size}.png<br>`;
-                    
+
+                    // Show completion message after last icon
                     if (index === sizes.length - 1) {
                         status.innerHTML += '<br><strong>All icons generated! Move them to the icons/ folder.</strong>';
                     }
-                }, index * 500);
+                }, index * 500); // 500ms delay between each download to avoid browser blocking
             });
         }
 

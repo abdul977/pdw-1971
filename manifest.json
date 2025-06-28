@@ -1,73 +1,106 @@
 {
+  "_comment_name": "Full application name displayed in app stores and installation prompts",
   "name": "Offline PWA Demo",
+
+  "_comment_short_name": "Short name displayed on home screen when space is limited (max 12 chars recommended)",
   "short_name": "PWA Demo",
+
+  "_comment_description": "App description for app stores and installation prompts",
   "description": "A Progressive Web App demonstrating offline capabilities with service workers",
+
+  "_comment_start_url": "URL that loads when app is launched from home screen",
   "start_url": "/",
+
+  "_comment_display": "How the app should be displayed (standalone = like native app, no browser UI)",
   "display": "standalone",
+
+  "_comment_background_color": "Background color shown during app launch before content loads",
   "background_color": "#667eea",
+
+  "_comment_theme_color": "Color of browser UI elements (status bar, etc.) when app is running",
   "theme_color": "#2196F3",
+
+  "_comment_orientation": "Preferred screen orientation (portrait-primary = vertical, locked)",
   "orientation": "portrait-primary",
+
+  "_comment_scope": "Navigation scope - URLs within this scope are considered part of the app",
   "scope": "/",
+
+  "_comment_lang": "Primary language of the app content",
   "lang": "en",
+
+  "_comment_categories": "App store categories for better discoverability",
   "categories": ["productivity", "utilities"],
+  "_comment_icons": "Array of app icons for different platforms and sizes",
   "icons": [
     {
+      "_comment": "72x72 icon for iOS home screen (iPad)",
       "src": "icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "96x96 icon for Android home screen (mdpi density)",
       "src": "icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "128x128 icon for Chrome Web Store and Windows",
       "src": "icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "144x144 icon for Windows tile (small)",
       "src": "icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "152x152 icon for iOS home screen (iPad retina)",
       "src": "icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "192x192 icon for Android home screen (xxhdpi) and Chrome splash screen",
       "src": "icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "384x384 icon for Android splash screen",
       "src": "icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "512x512 icon for PWA splash screen and app store listings",
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
+      "_comment": "32x32 icon for favicon and browser tab (purpose: any = not maskable)",
       "src": "icons/icon-32x32.png",
       "sizes": "32x32",
       "type": "image/png",
       "purpose": "any"
     }
   ],
+  "_comment_shortcuts": "App shortcuts that appear in context menus (right-click on app icon)",
   "shortcuts": [
     {
+      "_comment": "Quick access to demo features",
       "name": "Offline Demo",
       "short_name": "Demo",
       "description": "Try offline features",
@@ -80,8 +113,11 @@
       ]
     }
   ],
+
+  "_comment_screenshots": "Screenshots for app store listings and installation prompts",
   "screenshots": [
     {
+      "_comment": "Desktop/wide screen screenshot",
       "src": "screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
@@ -89,6 +125,7 @@
       "label": "Desktop view of the PWA"
     },
     {
+      "_comment": "Mobile/narrow screen screenshot",
       "src": "screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
@@ -96,8 +133,13 @@
       "label": "Mobile view of the PWA"
     }
   ],
+
+  "_comment_prefer_related_applications": "Whether to prefer native apps over PWA (false = prefer PWA)",
   "prefer_related_applications": false,
+
+  "_comment_edge_side_panel": "Microsoft Edge side panel configuration",
   "edge_side_panel": {
+    "_comment": "Preferred width when opened in Edge side panel",
     "preferred_width": 400
   }
 }

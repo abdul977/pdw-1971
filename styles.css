@@ -1,360 +1,570 @@
-/* Reset and base styles */
+/* Reset and base styles - normalize browser defaults for consistent appearance */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;                    /* Remove default margins */
+    padding: 0;                   /* Remove default padding */
+    box-sizing: border-box;       /* Include padding and border in element width/height */
 }
 
+/* Body styling with system fonts and gradient background */
 body {
+    /* Use system fonts for native appearance across platforms */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.6;            /* Improved readability with proper line spacing */
+    color: #333;                  /* Dark gray text for good contrast */
+    /* Purple gradient background for modern PWA appearance */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    min-height: 100vh;            /* Ensure full viewport height coverage */
 }
 
+/* Main container with responsive max-width and centering */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1200px;            /* Maximum width for large screens */
+    margin: 0 auto;               /* Center horizontally */
+    padding: 20px;                /* Internal spacing */
 }
 
-/* Header */
+/* Header styling with glassmorphism effect */
 header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
+    backdrop-filter: blur(10px);             /* Blur effect for glassmorphism */
+    border-radius: 15px;                     /* Rounded corners */
+    padding: 20px;                           /* Internal spacing */
+    margin-bottom: 30px;                     /* Space below header */
+    display: flex;                           /* Flexbox layout */
+    justify-content: space-between;          /* Space between title and status */
+    align-items: center;                     /* Vertical alignment */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
 }
 
+/* Main heading styling */
 h1 {
-    color: #2196F3;
-    font-size: 2.5rem;
-    font-weight: 700;
+    color: #2196F3;               /* Material Design blue */
+    font-size: 2.5rem;            /* Large heading size */
+    font-weight: 700;             /* Bold font weight */
 }
 
+/* Status indicator container */
 .status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    display: flex;                /* Flexbox for horizontal layout */
+    align-items: center;          /* Vertical alignment */
+    gap: 15px;                    /* Space between status and install button */
 }
 
+/* Online/offline status badge styling */
 .status {
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    padding: 8px 16px;            /* Internal spacing */
+    border-radius: 25px;          /* Pill-shaped border */
+    font-weight: 600;             /* Semi-bold text */
+    font-size: 0.9rem;            /* Slightly smaller text */
+    transition: all 0.3s ease;    /* Smooth transitions */
 }
 
+/* Online status styling - green background */
 .status.online {
-    background: #4CAF50;
-    color: white;
+    background: #4CAF50;          /* Material Design green */
+    color: white;                 /* White text for contrast */
 }
 
+/* Offline status styling - red background with pulsing animation */
 .status.offline {
-    background: #f44336;
-    color: white;
-    animation: pulse 2s infinite;
+    background: #f44336;          /* Material Design red */
+    color: white;                 /* White text for contrast */
+    animation: pulse 2s infinite; /* Pulsing animation to draw attention */
 }
 
+/* Keyframe animation for pulsing effect */
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 1; }     /* Full opacity at start and end */
+    50% { opacity: 0.7; }        /* Reduced opacity in middle */
 }
 
+/* PWA install button styling */
 .install-btn {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: #2196F3;          /* Material Design blue */
+    color: white;                 /* White text */
+    border: none;                 /* Remove default border */
+    padding: 10px 20px;           /* Button padding */
+    border-radius: 25px;          /* Rounded button */
+    cursor: pointer;              /* Pointer cursor on hover */
+    font-weight: 600;             /* Semi-bold text */
+    transition: all 0.3s ease;    /* Smooth hover transitions */
 }
 
+/* Install button hover effects */
 .install-btn:hover {
-    background: #1976D2;
-    transform: translateY(-2px);
+    background: #1976D2;          /* Darker blue on hover */
+    transform: translateY(-2px);  /* Lift effect on hover */
 }
 
-/* Main content */
+/* Main content area styling */
 main {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display: flex;                /* Flexbox layout */
+    flex-direction: column;       /* Stack sections vertically */
+    gap: 30px;                    /* Space between sections */
 }
 
+/* Section styling with glassmorphism effect */
 section {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
+    backdrop-filter: blur(10px);             /* Blur effect for glassmorphism */
+    border-radius: 15px;                     /* Rounded corners */
+    padding: 30px;                           /* Internal spacing */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
 }
 
+/* Section heading styling */
 h2 {
-    color: #2196F3;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    color: #2196F3;               /* Material Design blue */
+    margin-bottom: 20px;          /* Space below heading */
+    font-size: 1.8rem;            /* Large heading size */
 }
 
+/* Subsection heading styling */
 h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
+    color: #333;                  /* Dark gray text */
+    margin-bottom: 10px;          /* Space below heading */
+    font-size: 1.3rem;            /* Medium heading size */
 }
 
-/* Feature grid */
+/* Feature grid layout - responsive grid for feature cards */
 .feature-grid {
-    display: grid;
+    display: grid;                /* CSS Grid layout */
+    /* Auto-fit columns with minimum 250px width, expanding to fill space */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 20px;                    /* Space between grid items */
 }
 
+/* Individual feature card styling */
 .feature-card {
+    /* Subtle gradient background for visual interest */
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    padding: 20px;                /* Internal spacing */
+    border-radius: 10px;          /* Rounded corners */
+    text-align: center;           /* Center-align content */
+    transition: transform 0.3s ease;  /* Smooth hover animation */
 }
 
+/* Feature card hover effect - lift animation */
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);  /* Move up on hover */
 }
 
-/* Demo cards */
+/* Demo cards styling for interactive examples */
 .demo-card {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border-left: 4px solid #2196F3;
+    background: #f8f9fa;          /* Light gray background */
+    padding: 25px;                /* Internal spacing */
+    border-radius: 10px;          /* Rounded corners */
+    margin-bottom: 20px;          /* Space between cards */
+    border-left: 4px solid #2196F3;  /* Blue accent border on left */
 }
 
+/* Remove margin from last demo card */
 .demo-card:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0;             /* No margin on last card */
 }
 
-/* Form styles */
+/* Form styling for consistent input appearance */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 15px;
+    display: flex;                /* Flexbox layout */
+    flex-direction: column;       /* Stack form elements vertically */
+    gap: 15px;                    /* Space between form elements */
+    margin-top: 15px;             /* Space above form */
 }
 
+/* Input and textarea styling */
 input, textarea {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    padding: 12px;                /* Internal spacing */
+    border: 2px solid #ddd;       /* Light gray border */
+    border-radius: 8px;           /* Rounded corners */
+    font-size: 1rem;              /* Standard text size */
+    transition: border-color 0.3s ease;  /* Smooth border color transition */
 }
 
+/* Focus state for inputs - blue border when active */
 input:focus, textarea:focus {
-    outline: none;
-    border-color: #2196F3;
+    outline: none;                /* Remove default browser outline */
+    border-color: #2196F3;        /* Blue border on focus */
 }
 
+/* Textarea specific styling */
 textarea {
-    resize: vertical;
-    min-height: 100px;
+    resize: vertical;             /* Allow vertical resizing only */
+    min-height: 100px;            /* Minimum height for usability */
 }
 
-/* Buttons */
+/* Button styling - consistent appearance for all interactive buttons */
 .btn {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-decoration: none;
+    background: #2196F3;          /* Material Design blue background */
+    color: white;                 /* White text for contrast */
+    border: none;                 /* Remove default border */
+    padding: 12px 24px;           /* Comfortable padding for touch targets */
+    border-radius: 8px;           /* Rounded corners */
+    cursor: pointer;              /* Pointer cursor to indicate interactivity */
+    font-size: 1rem;              /* Standard text size */
+    font-weight: 600;             /* Semi-bold text */
+    transition: all 0.3s ease;    /* Smooth transitions for hover effects */
+    display: inline-block;        /* Allow for link styling */
+    text-decoration: none;        /* Remove underline for link buttons */
 }
 
+/* Button hover effects - visual feedback for user interaction */
 .btn:hover {
-    background: #1976D2;
-    transform: translateY(-2px);
+    background: #1976D2;          /* Darker blue on hover */
+    transform: translateY(-2px);  /* Lift effect on hover */
 }
 
+/* Button active state - feedback when button is pressed */
 .btn:active {
-    transform: translateY(0);
+    transform: translateY(0);     /* Return to normal position when pressed */
 }
 
-/* Content areas */
+/* Content areas for displaying dynamic content */
 .content-area {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-    min-height: 60px;
+    background: white;            /* White background for content visibility */
+    padding: 15px;                /* Internal spacing */
+    border-radius: 8px;           /* Rounded corners */
+    margin-top: 15px;             /* Space above content area */
+    border: 1px solid #ddd;       /* Light border for definition */
+    min-height: 60px;             /* Minimum height to prevent layout shift */
 }
 
-/* Status messages */
+/* Status message styling for user feedback */
 .status-message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: 600;
+    margin-top: 15px;             /* Space above status message */
+    padding: 10px;                /* Internal spacing */
+    border-radius: 8px;           /* Rounded corners */
+    font-weight: 600;             /* Semi-bold text for emphasis */
 }
 
+/* Success status message - green theme */
 .status-message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: #d4edda;          /* Light green background */
+    color: #155724;               /* Dark green text */
+    border: 1px solid #c3e6cb;    /* Green border */
 }
 
+/* Error status message - red theme */
 .status-message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: #f8d7da;          /* Light red background */
+    color: #721c24;               /* Dark red text */
+    border: 1px solid #f5c6cb;    /* Red border */
 }
 
+/* Info status message - blue theme */
 .status-message.info {
-    background: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+    background: #d1ecf1;          /* Light blue background */
+    color: #0c5460;               /* Dark blue text */
+    border: 1px solid #bee5eb;    /* Blue border */
 }
 
-/* Sync status */
+/* Sync status container styling */
 .sync-status {
-    background: #e3f2fd;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background: #e3f2fd;          /* Light blue background */
+    padding: 20px;                /* Internal spacing */
+    border-radius: 8px;           /* Rounded corners */
+    margin-bottom: 20px;          /* Space below sync status */
 }
 
+/* Sync log styling - monospace font for technical output */
 .sync-log {
-    background: #f5f5f5;
-    padding: 15px;
-    border-radius: 8px;
-    max-height: 200px;
-    overflow-y: auto;
-    font-family: monospace;
-    font-size: 0.9rem;
+    background: #f5f5f5;          /* Light gray background */
+    padding: 15px;                /* Internal spacing */
+    border-radius: 8px;           /* Rounded corners */
+    max-height: 200px;            /* Limit height to prevent overflow */
+    overflow-y: auto;             /* Vertical scrolling for long logs */
+    font-family: monospace;       /* Monospace font for code-like appearance */
+    font-size: 0.9rem;            /* Slightly smaller text */
 }
 
-/* Loading indicator */
+/* Development Journey section styling */
+.journey-section {
+    background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
+    backdrop-filter: blur(10px);             /* Glassmorphism effect */
+    border-radius: 15px;                     /* Rounded corners */
+    padding: 30px;                           /* Internal spacing */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
+}
+
+/* Journey content container */
+.journey-content {
+    line-height: 1.6;            /* Improved readability */
+}
+
+/* Journey content intro paragraph */
+.journey-content > p {
+    font-size: 1.1rem;           /* Slightly larger intro text */
+    margin-bottom: 25px;         /* Space below intro */
+    color: #555;                 /* Medium gray text */
+    font-style: italic;          /* Italic for emphasis */
+}
+
+/* Journey highlights grid layout */
+.journey-highlights {
+    display: grid;               /* CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsive columns */
+    gap: 20px;                   /* Space between cards */
+    margin: 25px 0;              /* Vertical spacing */
+}
+
+/* Individual journey card styling */
+.journey-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);  /* Subtle gradient */
+    padding: 20px;               /* Internal spacing */
+    border-radius: 12px;         /* Rounded corners */
+    border-left: 4px solid #2196F3;  /* Blue accent border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effects */
+}
+
+/* Journey card hover effects */
+.journey-card:hover {
+    transform: translateY(-3px);  /* Lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Enhanced shadow on hover */
+}
+
+/* Journey card headings */
+.journey-card h3 {
+    color: #2196F3;              /* Blue heading color */
+    margin-bottom: 12px;         /* Space below heading */
+    font-size: 1.2rem;           /* Medium heading size */
+}
+
+/* Journey card text */
+.journey-card p {
+    color: #666;                 /* Medium gray text */
+    font-size: 0.95rem;          /* Slightly smaller text */
+    line-height: 1.5;            /* Good readability */
+    margin: 0;                   /* Remove default margin */
+}
+
+/* Journey conclusion styling */
+.journey-conclusion {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);  /* Light blue gradient */
+    padding: 20px;               /* Internal spacing */
+    border-radius: 12px;         /* Rounded corners */
+    margin-top: 25px;            /* Space above conclusion */
+    border-left: 4px solid #1976D2;  /* Darker blue accent */
+}
+
+/* Journey conclusion text */
+.journey-conclusion p {
+    margin: 0;                   /* Remove default margin */
+    font-size: 1rem;             /* Standard text size */
+    color: #1565C0;              /* Dark blue text */
+    line-height: 1.6;            /* Good readability */
+}
+
+/* Development Journey section styling */
+.journey-section {
+    background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
+    backdrop-filter: blur(10px);             /* Glassmorphism effect */
+    border-radius: 15px;                     /* Rounded corners */
+    padding: 30px;                           /* Internal spacing */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
+}
+
+/* Journey content container */
+.journey-content {
+    line-height: 1.6;            /* Improved readability */
+}
+
+/* Journey content intro paragraph */
+.journey-content > p {
+    font-size: 1.1rem;           /* Slightly larger intro text */
+    margin-bottom: 25px;         /* Space below intro */
+    color: #555;                 /* Medium gray text */
+    font-style: italic;          /* Italic for emphasis */
+}
+
+/* Journey highlights grid layout */
+.journey-highlights {
+    display: grid;               /* CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsive columns */
+    gap: 20px;                   /* Space between cards */
+    margin: 25px 0;              /* Vertical spacing */
+}
+
+/* Individual journey card styling */
+.journey-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);  /* Subtle gradient */
+    padding: 20px;               /* Internal spacing */
+    border-radius: 12px;         /* Rounded corners */
+    border-left: 4px solid #2196F3;  /* Blue accent border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effects */
+}
+
+/* Journey card hover effects */
+.journey-card:hover {
+    transform: translateY(-3px);  /* Lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Enhanced shadow on hover */
+}
+
+/* Journey card headings */
+.journey-card h3 {
+    color: #2196F3;              /* Blue heading color */
+    margin-bottom: 12px;         /* Space below heading */
+    font-size: 1.2rem;           /* Medium heading size */
+}
+
+/* Journey card text */
+.journey-card p {
+    color: #666;                 /* Medium gray text */
+    font-size: 0.95rem;          /* Slightly smaller text */
+    line-height: 1.5;            /* Good readability */
+    margin: 0;                   /* Remove default margin */
+}
+
+/* Journey conclusion styling */
+.journey-conclusion {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);  /* Light blue gradient */
+    padding: 20px;               /* Internal spacing */
+    border-radius: 12px;         /* Rounded corners */
+    margin-top: 25px;            /* Space above conclusion */
+    border-left: 4px solid #1976D2;  /* Darker blue accent */
+}
+
+/* Journey conclusion text */
+.journey-conclusion p {
+    margin: 0;                   /* Remove default margin */
+    font-size: 1rem;             /* Standard text size */
+    color: #1565C0;              /* Dark blue text */
+    line-height: 1.6;            /* Good readability */
+}
+
+/* Loading indicator - full-screen overlay with spinner */
 .loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    color: white;
+    position: fixed;              /* Fixed positioning to cover entire viewport */
+    top: 0;                       /* Position at top of screen */
+    left: 0;                      /* Position at left of screen */
+    width: 100%;                  /* Full width coverage */
+    height: 100%;                 /* Full height coverage */
+    background: rgba(0, 0, 0, 0.5);  /* Semi-transparent dark overlay */
+    display: flex;                /* Flexbox for centering */
+    flex-direction: column;       /* Stack spinner and text vertically */
+    justify-content: center;      /* Center vertically */
+    align-items: center;          /* Center horizontally */
+    z-index: 1000;                /* High z-index to appear above other content */
+    color: white;                 /* White text for visibility */
 }
 
+/* Animated spinner element */
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-top: 5px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px;
+    width: 50px;                  /* Spinner size */
+    height: 50px;                 /* Spinner size */
+    border: 5px solid rgba(255, 255, 255, 0.3);  /* Light border for spinner ring */
+    border-top: 5px solid white;  /* White border on top for spinning effect */
+    border-radius: 50%;           /* Circular shape */
+    animation: spin 1s linear infinite;  /* Continuous spinning animation */
+    margin-bottom: 20px;          /* Space below spinner */
 }
 
+/* Keyframe animation for spinner rotation */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }    /* Start at 0 degrees */
+    100% { transform: rotate(360deg); } /* End at 360 degrees */
 }
 
-/* Notification */
+/* Notification banner styling - appears in top-right corner */
 .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #2196F3;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    max-width: 400px;
+    position: fixed;              /* Fixed positioning */
+    top: 20px;                    /* Distance from top */
+    right: 20px;                  /* Distance from right */
+    background: #2196F3;          /* Default blue background */
+    color: white;                 /* White text */
+    padding: 15px 20px;           /* Internal spacing */
+    border-radius: 8px;           /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  /* Drop shadow for depth */
+    z-index: 1001;                /* Higher z-index than loading overlay */
+    display: flex;                /* Flexbox layout */
+    align-items: center;          /* Vertical alignment */
+    gap: 15px;                    /* Space between text and close button */
+    max-width: 400px;             /* Maximum width to prevent overflow */
 }
 
+/* Success notification styling - green background */
 .notification.success {
-    background: #4CAF50;
+    background: #4CAF50;          /* Material Design green */
 }
 
+/* Error notification styling - red background */
 .notification.error {
-    background: #f44336;
+    background: #f44336;          /* Material Design red */
 }
 
+/* Warning notification styling - orange background */
 .notification.warning {
-    background: #ff9800;
+    background: #ff9800;          /* Material Design orange */
 }
 
+/* Notification close button styling */
 #notification-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: none;             /* Transparent background */
+    border: none;                 /* No border */
+    color: white;                 /* White text */
+    font-size: 1.5rem;            /* Large close icon */
+    cursor: pointer;              /* Pointer cursor */
+    padding: 0;                   /* No padding */
+    width: 24px;                  /* Fixed width */
+    height: 24px;                 /* Fixed height */
+    display: flex;                /* Flexbox for centering */
+    align-items: center;          /* Vertical centering */
+    justify-content: center;      /* Horizontal centering */
 }
 
-/* Footer */
+/* Footer styling with glassmorphism effect */
 footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;           /* Center-align text */
+    margin-top: 30px;             /* Space above footer */
+    padding: 20px;                /* Internal spacing */
+    background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white */
+    backdrop-filter: blur(10px);  /* Blur effect for glassmorphism */
+    border-radius: 15px;          /* Rounded corners */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* Subtle drop shadow */
 }
 
-/* Responsive design */
+/* Responsive design - mobile-first approach for smaller screens */
 @media (max-width: 768px) {
+    /* Reduce container padding on mobile */
     .container {
-        padding: 15px;
+        padding: 15px;             /* Less padding for mobile */
     }
-    
+
+    /* Stack header elements vertically on mobile */
     header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        flex-direction: column;    /* Stack vertically */
+        gap: 15px;                 /* Space between elements */
+        text-align: center;        /* Center-align content */
     }
-    
+
+    /* Smaller heading on mobile */
     h1 {
-        font-size: 2rem;
+        font-size: 2rem;           /* Reduced font size for mobile */
     }
-    
+
+    /* Single column layout for feature grid on mobile */
     .feature-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column layout */
     }
-    
+
+    /* Single column layout for journey highlights on mobile */
+    .journey-highlights {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 15px;                   /* Reduced gap for mobile */
+    }
+
+    /* Adjust journey card padding on mobile */
+    .journey-card {
+        padding: 15px;               /* Reduced padding for mobile */
+    }
+
+    /* Adjust journey conclusion padding on mobile */
+    .journey-conclusion {
+        padding: 15px;               /* Reduced padding for mobile */
+    }
+
+    /* Full-width notifications on mobile */
     .notification {
-        right: 15px;
-        left: 15px;
-        max-width: none;
+        right: 15px;               /* Reduced margin from right */
+        left: 15px;                /* Add margin from left */
+        max-width: none;           /* Remove max-width restriction */
     }
 }

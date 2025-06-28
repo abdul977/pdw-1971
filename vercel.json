@@ -1,14 +1,23 @@
 {
+  "_comment_version": "Vercel configuration version (2 is current)",
   "version": 2,
+
+  "_comment_name": "Project name for Vercel deployment",
   "name": "pwa-offline-demo",
+
+  "_comment_builds": "Build configuration - how Vercel should process files",
   "builds": [
     {
+      "_comment": "Build all files as static assets (no server-side processing)",
       "src": "**/*",
       "use": "@vercel/static"
     }
   ],
+
+  "_comment_routes": "URL routing configuration with headers",
   "routes": [
     {
+      "_comment": "Service worker route with PWA-specific headers",
       "src": "/sw.js",
       "headers": {
         "Service-Worker-Allowed": "/",
@@ -16,60 +25,77 @@
       }
     },
     {
+      "_comment": "PWA manifest route with correct MIME type",
       "src": "/manifest.json",
       "headers": {
         "Content-Type": "application/manifest+json"
       }
     },
     {
+      "_comment": "Catch-all route for all other files",
       "src": "/(.*)",
       "dest": "/$1"
     }
   ],
+  "_comment_headers": "Global headers configuration for security and PWA functionality",
   "headers": [
     {
+      "_comment": "Service worker headers for PWA functionality",
       "source": "/sw.js",
       "headers": [
         {
+          "_comment": "Allow service worker to control entire origin",
           "key": "Service-Worker-Allowed",
           "value": "/"
         },
         {
+          "_comment": "Correct MIME type for JavaScript files",
           "key": "Content-Type",
           "value": "application/javascript"
         }
       ]
     },
     {
+      "_comment": "PWA manifest headers",
       "source": "/manifest.json",
       "headers": [
         {
+          "_comment": "Correct MIME type for PWA manifest files",
           "key": "Content-Type",
           "value": "application/manifest+json"
         }
       ]
     },
     {
+      "_comment": "Security headers for all files",
       "source": "/(.*)",
       "headers": [
         {
+          "_comment": "Prevent MIME type sniffing attacks",
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
         {
+          "_comment": "Prevent clickjacking attacks",
           "key": "X-Frame-Options",
           "value": "DENY"
         },
         {
+          "_comment": "Enable XSS protection in browsers",
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
         }
       ]
     }
   ],
+
+  "_comment_functions": "Serverless functions configuration (empty for static site)",
   "functions": {},
+
+  "_comment_rewrites": "URL rewrite rules for routing",
   "rewrites": [
     {
+      "_comment": "Pass through all requests to static files",
       "source": "/(.*)",
       "destination": "/$1"
     }

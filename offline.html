@@ -1,182 +1,225 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- HTML5 document type declaration -->
+<html lang="en"> <!-- Root element with English language specification -->
 <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8">
+
+    <!-- Responsive viewport meta tag for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title for offline fallback page -->
     <title>Offline - PWA Demo</title>
+
+    <!-- PWA theme color for browser UI consistency -->
     <meta name="theme-color" content="#2196F3">
+
+    <!-- Inline CSS styles for offline page (no external dependencies) -->
     <style>
+        /* CSS Reset - remove default browser styling */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Include padding and border in element width/height */
         }
 
+        /* Body styling with gradient background and flexbox centering */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* System fonts for consistency */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient background */
+            min-height: 100vh; /* Full viewport height */
+            display: flex; /* Flexbox for centering */
+            align-items: center; /* Vertical centering */
+            justify-content: center; /* Horizontal centering */
+            color: white; /* White text for contrast */
+            text-align: center; /* Center-align text */
+            padding: 20px; /* Padding for mobile devices */
         }
 
+        /* Main container with glassmorphism effect */
         .offline-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+            border-radius: 20px; /* Rounded corners */
+            padding: 40px; /* Internal spacing */
+            max-width: 500px; /* Maximum width for readability */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Drop shadow for depth */
         }
 
+        /* Animated offline icon */
         .offline-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+            font-size: 4rem; /* Large icon size */
+            margin-bottom: 20px; /* Space below icon */
+            animation: pulse 2s infinite; /* Pulsing animation */
         }
 
+        /* Keyframe animation for pulsing effect */
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% { opacity: 1; } /* Full opacity at start and end */
+            50% { opacity: 0.7; } /* Reduced opacity in middle */
         }
 
+        /* Main heading styling */
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #fff;
+            font-size: 2.5rem; /* Large heading size */
+            margin-bottom: 20px; /* Space below heading */
+            color: #fff; /* White color for visibility */
         }
 
+        /* Paragraph text styling */
         p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            opacity: 0.9;
+            font-size: 1.2rem; /* Readable text size */
+            margin-bottom: 30px; /* Space below paragraphs */
+            line-height: 1.6; /* Improved readability */
+            opacity: 0.9; /* Slightly transparent for hierarchy */
         }
 
+        /* Button styling with hover effects */
         .retry-btn {
-            background: #2196F3;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 10px;
+            background: #2196F3; /* Material Design blue */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            padding: 15px 30px; /* Button padding */
+            border-radius: 25px; /* Rounded button */
+            font-size: 1.1rem; /* Button text size */
+            font-weight: 600; /* Semi-bold text */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: all 0.3s ease; /* Smooth transitions */
+            margin: 10px; /* Space between buttons */
         }
 
+        /* Button hover effects */
         .retry-btn:hover {
-            background: #1976D2;
-            transform: translateY(-2px);
+            background: #1976D2; /* Darker blue on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
         }
 
+        /* Features list container */
         .features {
-            margin-top: 30px;
-            text-align: left;
+            margin-top: 30px; /* Space above features */
+            text-align: left; /* Left-align feature list */
         }
 
+        /* Individual feature item styling */
         .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 1rem;
+            display: flex; /* Flexbox for icon and text alignment */
+            align-items: center; /* Vertical alignment */
+            margin-bottom: 15px; /* Space between items */
+            font-size: 1rem; /* Standard text size */
         }
 
+        /* Feature icon styling */
         .feature-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 10px; /* Space between icon and text */
+            font-size: 1.2rem; /* Slightly larger icon */
         }
 
+        /* Back link styling */
         .back-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
+            color: #fff; /* White text */
+            text-decoration: none; /* Remove underline */
+            font-weight: 600; /* Semi-bold text */
+            border-bottom: 2px solid transparent; /* Invisible border for hover effect */
+            transition: border-color 0.3s ease; /* Smooth border transition */
         }
 
+        /* Back link hover effect */
         .back-link:hover {
-            border-bottom-color: #fff;
+            border-bottom-color: #fff; /* Show white border on hover */
         }
     </style>
 </head>
 <body>
+    <!-- Main offline page container -->
     <div class="offline-container">
+        <!-- Animated offline icon -->
         <div class="offline-icon">📱</div>
+
+        <!-- Main heading -->
         <h1>You're Offline</h1>
+
+        <!-- Explanatory text about offline functionality -->
         <p>
-            Don't worry! This PWA works offline too. 
+            Don't worry! This PWA works offline too.
             Some features are still available even without an internet connection.
         </p>
-        
+
+        <!-- Retry button to reload the page -->
         <button class="retry-btn" onclick="window.location.reload()">
             🔄 Try Again
         </button>
-        
+
+        <!-- Home button to navigate back to main page -->
         <button class="retry-btn" onclick="goHome()">
             🏠 Go Home
         </button>
 
+        <!-- List of available offline features -->
         <div class="features">
             <h3 style="margin-bottom: 15px; color: #fff;">Available Offline:</h3>
+            <!-- Cached content feature -->
             <div class="feature-item">
                 <span class="feature-icon">📄</span>
                 <span>Cached content and pages</span>
             </div>
+            <!-- Offline form submissions feature -->
             <div class="feature-item">
                 <span class="feature-icon">📝</span>
                 <span>Offline form submissions</span>
             </div>
+            <!-- Local storage feature -->
             <div class="feature-item">
                 <span class="feature-icon">💾</span>
                 <span>Local data storage</span>
             </div>
+            <!-- Background sync feature -->
             <div class="feature-item">
                 <span class="feature-icon">🔄</span>
                 <span>Background sync when online</span>
             </div>
         </div>
 
+        <!-- Back to main page link -->
         <p style="margin-top: 30px; font-size: 1rem;">
             <a href="/" class="back-link">← Back to PWA Demo</a>
         </p>
     </div>
 
+    <!-- JavaScript for offline page functionality -->
     <script>
+        // Navigation function to return to home page
         function goHome() {
-            window.location.href = '/';
+            window.location.href = '/'; // Navigate to root URL
         }
 
-        // Check for online status
+        // Check for online status and reload if connection restored
         function checkOnlineStatus() {
-            if (navigator.onLine) {
-                window.location.reload();
+            if (navigator.onLine) { // Browser reports online status
+                window.location.reload(); // Reload page to return to normal operation
             }
         }
 
-        // Listen for online event
+        // Listen for browser's online event (when connection is restored)
         window.addEventListener('online', checkOnlineStatus);
 
-        // Periodically check connection
-        setInterval(checkOnlineStatus, 5000);
+        // Periodically check connection status (fallback for unreliable online events)
+        setInterval(checkOnlineStatus, 5000); // Check every 5 seconds
 
-        // Show connection status
+        // Visual feedback function for connection status changes
         function updateConnectionStatus() {
             if (navigator.onLine) {
+                // Change background to green to indicate connection restored
                 document.body.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+                // Wait 1 second to show green background, then reload
                 setTimeout(() => {
                     window.location.reload();
                 }, 1000);
             }
         }
 
-        window.addEventListener('online', updateConnectionStatus);
+        // Event listeners for connection status changes
+        window.addEventListener('online', updateConnectionStatus); // Connection restored
         window.addEventListener('offline', () => {
+            // Change background back to purple when going offline
             document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         });
     </script>
